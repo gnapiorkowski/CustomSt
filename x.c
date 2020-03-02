@@ -63,6 +63,7 @@ static void ttysend(const Arg *);
 
 /* config.h for applying patches and the configuration. */
 #include "config.h"
+const int coloroptionsamount = LEN(colorname);
 
 /* XEMBED messages */
 #define XEMBED_FOCUS_IN  4
@@ -254,7 +255,7 @@ static char *opt_title = NULL;
 
 static int oldbutton = 3; /* button event on startup: 3 = release */
 
-int usealtcolors = 0; /* 1 to use alternate palette */
+int altcolorsindex = 0; /* 1+ to use alternate palette */
 
 void
 clipcopy(const Arg *dummy)
@@ -297,7 +298,11 @@ numlock(const Arg *dummy)
 void
 swapcolors(const Arg *dummy)
 {
-	usealtcolors = !usealtcolors;
+	if (altcolorsindex < coloroptionsamount-1){
+		altcolorsindex += 1;
+	} else {
+		altcolorsindex = 0;
+	}
 	xloadcols();
 	redraw();
 }
@@ -746,7 +751,7 @@ sixd_to_16bit(int x)
 
 const char* getcolorname(int i)
 {
-    return (usealtcolors) ?  altcolorname[i] : colorname[i];
+    return colorname[altcolorsindex][i];
 }
 
 int
@@ -784,7 +789,14 @@ xloadcols(void)
 		for (cp = dc.col; cp < &dc.col[dc.collen]; ++cp)
 			XftColorFree(xw.dpy, xw.vis, xw.cmap, cp);
 	} else {
-		dc.collen = MAX(LEN(colorname), LEN(altcolorname));
+
+		for (int i = 0; i < coloroptionsamount; i++){
+			if (i != 0){
+				dc.collen = MAX(LEN(colorname[i]), dc.collen);
+			} else {
+				dc.collen = LEN(colorname[i]);
+			}
+		}
 		dc.col = xmalloc(dc.collen * sizeof(Color));
 	}
 
