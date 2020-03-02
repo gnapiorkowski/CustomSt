@@ -1,4 +1,4 @@
-#Gustaw's custom version of ST
+# Gustaw's custom version of ST
 
 Patches added:
 * Solarized and Dracula 
