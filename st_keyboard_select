@@ -1,0 +1,3 @@
+#!/bin/sh
+
+printf "\nh, j, k, l:    move cursor left/down/up/right (also with arrow keys)\n!, _, *:       move cursor to the middle of the line/column/screen \nBackspace, $:  move cursor to the beginning/end of the line \nPgUp, PgDown : move cursor to the beginning/end of the column \nHome, End:     move cursor to the top/bottom left corner of the screen \n/, ?:          activate input mode and search up/down \nn, N:          repeat last search, up/down \ns:             toggle move/selection mode \nt:             toggle regular/rectangular selection type \nReturn:        quit keyboard_select, keeping the highlight of the selection \nEscape:        quit keyboard_select\n"
