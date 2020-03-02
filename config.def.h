@@ -82,6 +82,10 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+/* bg opacity */
+float alpha = 0.99;           //< alpha value used when the window is focused.
+float alphaUnfocussed = 0.8; //< alpha value used when the focus is lost
+
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[][258] = {
 	{
