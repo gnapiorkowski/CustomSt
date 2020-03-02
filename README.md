@@ -1,8 +1,10 @@
 #Gustaw's custom version of ST
 
 Patches added:
-* Solarized
+* Solarized and Dracula 
+	* Switchability between Sol. Dark Sol. Light and Drachula With ```F6```
 * Scroll
+* Transparency of unfocused windows
 
 [st - simple terminal](https://st.suckless.org/)
 --------------------
