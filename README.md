@@ -5,6 +5,7 @@ Patches added:
 	* Switchability between Sol. Dark Sol. Light and Drachula with ```F6```
 * Scroll
 * Transparency of unfocused windows
+* Keyboard select
 
 [st - simple terminal](https://st.suckless.org/)
 --------------------
