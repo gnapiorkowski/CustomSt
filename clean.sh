@@ -1,3 +1,3 @@
 #!/bin/sh
-echo Removing 
-rm -r st st.o x.o config.h
+echo rm -f st st.o x.o config.h
+rm -f st st.o x.o config.h
