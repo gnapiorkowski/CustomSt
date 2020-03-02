@@ -2,7 +2,7 @@
 
 Patches added:
 * Solarized and Dracula 
-	* Switchability between Sol. Dark Sol. Light and Drachula With ```F6```
+	* Switchability between Sol. Dark Sol. Light and Drachula with ```F6```
 * Scroll
 * Transparency of unfocused windows
 
