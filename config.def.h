@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Roboto Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = "Roboto Mono:pixelsize=14:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -84,32 +84,34 @@ unsigned int tabspaces = 8;
 
 /* bg opacity */
 float alpha = 0.99;           //< alpha value used when the window is focused.
-float alphaUnfocussed = 0.8; //< alpha value used when the focus is lost
+float alphaUnfocussed = 0.93; //< alpha value used when the focus is lost
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[][258] = {
 	{
-	/* solarized dark */
-	"#073642",  /*  0: black    */
-	"#dc322f",  /*  1: red      */
-	"#859900",  /*  2: green    */
-	"#b58900",  /*  3: yellow   */
-	"#268bd2",  /*  4: blue     */
-	"#d33682",  /*  5: magenta  */
-	"#2aa198",  /*  6: cyan     */
-	"#eee8d5",  /*  7: white    */
-	"#002b36",  /*  8: brblack  */
-	"#cb4b16",  /*  9: brred    */
-	"#586e75",  /* 10: brgreen  */
-	"#657b83",  /* 11: bryellow */
-	"#839496",  /* 12: brblue   */
-	"#6c71c4",  /* 13: brmagenta*/
-	"#93a1a1",  /* 14: brcyan   */
-	"#fdf6e3",  /* 15: brwhite  */
+	/* 8 normal colors */
+	[0] = "#000000", /* black   */
+	[1] = "#ff5555", /* red     */
+	[2] = "#50fa7b", /* green   */
+	[3] = "#f1fa8c", /* yellow  */
+	[4] = "#bd93f9", /* blue    */
+	[5] = "#ff79c6", /* magenta */
+	[6] = "#8be9fd", /* cyan    */
+	[7] = "#bbbbbb", /* white   */
+	
+	/* 8 bright colors */
+	[8]  = "#44475a", /* black   */
+	[9]  = "#ff5555", /* red     */
+	[10] = "#50fa7b", /* green   */
+	[11] = "#f1fa8c", /* yellow  */
+	[12] = "#bd93f9", /* blue    */
+	[13] = "#ff79c6", /* magenta */
+	[14] = "#8be9fd", /* cyan    */
+	[15] = "#ffffff", /* white   */
 	
 	/* special colors */
-	[256] = "#839496", /* foreground */
-	[257] = "#002b36", /* background */
+	[256] = "#f8f8f2", /* foreground */
+	[257] = "#282a36", /* background */
 	},
 
 	{
@@ -137,29 +139,27 @@ static const char *colorname[][258] = {
 	},
 
 	{
-	/* 8 normal colors */
-	[0] = "#000000", /* black   */
-	[1] = "#ff5555", /* red     */
-	[2] = "#50fa7b", /* green   */
-	[3] = "#f1fa8c", /* yellow  */
-	[4] = "#bd93f9", /* blue    */
-	[5] = "#ff79c6", /* magenta */
-	[6] = "#8be9fd", /* cyan    */
-	[7] = "#bbbbbb", /* white   */
-	
-	/* 8 bright colors */
-	[8]  = "#44475a", /* black   */
-	[9]  = "#ff5555", /* red     */
-	[10] = "#50fa7b", /* green   */
-	[11] = "#f1fa8c", /* yellow  */
-	[12] = "#bd93f9", /* blue    */
-	[13] = "#ff79c6", /* magenta */
-	[14] = "#8be9fd", /* cyan    */
-	[15] = "#ffffff", /* white   */
+	/* solarized dark */
+	"#073642",  /*  0: black    */
+	"#dc322f",  /*  1: red      */
+	"#859900",  /*  2: green    */
+	"#b58900",  /*  3: yellow   */
+	"#268bd2",  /*  4: blue     */
+	"#d33682",  /*  5: magenta  */
+	"#2aa198",  /*  6: cyan     */
+	"#eee8d5",  /*  7: white    */
+	"#002b36",  /*  8: brblack  */
+	"#cb4b16",  /*  9: brred    */
+	"#586e75",  /* 10: brgreen  */
+	"#657b83",  /* 11: bryellow */
+	"#839496",  /* 12: brblue   */
+	"#6c71c4",  /* 13: brmagenta*/
+	"#93a1a1",  /* 14: brcyan   */
+	"#fdf6e3",  /* 15: brwhite  */
 	
 	/* special colors */
-	[256] = "#f8f8f2", /* foreground */
-	[257] = "#282a36", /* background */
+	[256] = "#839496", /* foreground */
+	[257] = "#002b36", /* background */
 	}
 };
 
@@ -241,7 +241,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ XK_ANY_MOD,           XK_F6,          swapcolors,     {.i =  0} },
+	{ TERMMOD,           XK_F6,          swapcolors,     {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ TERMMOD,              XK_Escape,      keyboard_select,{ 0 } },
